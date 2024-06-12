@@ -1,0 +1,41 @@
+[
+  {
+    "Realtime Currency Exchange Rate": {
+      "1. From_Currency Code": "BTC",
+      "2. From_Currency Name": "Bitcoin",
+      "3. To_Currency Code": "EUR",
+      "4. To_Currency Name": "Euro",
+      "5. Exchange Rate": "65201.64000000",
+      "6. Last Refreshed": "2024-06-06 10:00:27",
+      "7. Time Zone": "UTC",
+      "8. Bid Price": "65200.49500000",
+      "9. Ask Price": "65202.13800000"
+    }
+  },
+  {
+    "Realtime Currency Exchange Rate": {
+      "1. From_Currency Code": "SOL",
+      "2. From_Currency Name": "Solana",
+      "3. To_Currency Code": "EUR",
+      "4. To_Currency Name": "Euro",
+      "5. Exchange Rate": "158.66000000",
+      "6. Last Refreshed": "2024-06-06 10:00:27",
+      "7. Time Zone": "UTC",
+      "8. Bid Price": "158.65300000",
+      "9. Ask Price": "158.66300000"
+    }
+  },
+  {
+    "Realtime Currency Exchange Rate": {
+      "1. From_Currency Code": "ETH",
+      "2. From_Currency Name": "Ethereum",
+      "3. To_Currency Code": "EUR",
+      "4. To_Currency Name": "Euro",
+      "5. Exchange Rate": "3537.18000000",
+      "6. Last Refreshed": "2024-06-06 10:00:09",
+      "7. Time Zone": "UTC",
+      "8. Bid Price": "3537.14200000",
+      "9. Ask Price": "3537.18200000"
+    }
+  }
+]

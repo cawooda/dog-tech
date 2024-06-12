@@ -1,0 +1,48 @@
+{{!-- {{log this}} --}}
+<div class="navbar-end">
+  {{#if loggedIn}}
+  {{>post-buttons}}
+  {{/if}}
+  {{#if loggedOut}}
+  {{>auth-buttons}}
+  {{/if}}
+</div>
+{{#if loggedIn}}
+{{#each posts as |post|}}
+<div class="container">
+  <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="{{post.img}}" alt="{{post.img_alt}}" />
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="{{post.img}}" alt="{{post.img_alt}}" />
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">{{post.registeredUser.first_name}} {{post.registeredUser.last_name}}</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2>{{title}}</h2>
+        {{content}}
+        <br />
+        {{#each tags as |tag|}}
+        <a href="/tags">#{{tag}}</a>
+        {{/each}}
+        <br />
+        <time datetime="2016-1-1">{{formatDate createdAt}}</time>
+      </div>
+      {{>comments}}
+
+
+    </div>
+  </div>
+</div>
+{{/each}}
+{{/if}}

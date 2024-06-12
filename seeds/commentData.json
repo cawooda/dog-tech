@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "content": "Great article on JavaScript ES6 features! Learned a lot about destructuring and arrow functions.",
+    "user_id": 1,
+    "post_id": 1
+  },
+  {
+    "id": 2,
+    "content": "I've been using Node.js for a year now and it's amazing how much you can achieve with it. Thanks for the tips!",
+    "user_id": 2,
+    "post_id": 2
+  },
+  {
+    "id": 3,
+    "content": "This tutorial on setting up Express.js was very helpful. I had trouble with middleware, but now it's clear.",
+    "user_id": 1,
+    "post_id": 3
+  },
+  {
+    "id": 4,
+    "content": "Can you write more about async/await in JavaScript? I'm still trying to get the hang of it.",
+    "user_id": 2,
+    "post_id": 4
+  },
+  {
+    "id": 5,
+    "content": "I appreciate the comprehensive guide on React hooks. useEffect was confusing, but your examples made it easier.",
+    "user_id": 1,
+    "post_id": 5
+  },
+  {
+    "id": 6,
+    "content": "The section on optimizing SQL queries was exactly what I needed. Thanks for sharing these best practices.",
+    "user_id": 2,
+    "post_id": 1
+  },
+  {
+    "id": 7,
+    "content": "Your insights on cybersecurity for web developers are invaluable. Security is often overlooked but so crucial.",
+    "user_id": 1,
+    "post_id": 2
+  },
+  {
+    "id": 8,
+    "content": "I've been struggling with CSS Grid. Your examples made it much clearer. Please continue with more CSS topics!",
+    "user_id": 2,
+    "post_id": 3
+  },
+  {
+    "id": 9,
+    "content": "This was a fantastic introduction to GraphQL. I'm excited to start using it in my next project.",
+    "user_id": 1,
+    "post_id": 4
+  },
+  {
+    "id": 10,
+    "content": "Docker is a game-changer for development. Your guide was a perfect start for beginners like me.",
+    "user_id": 2,
+    "post_id": 5
+  }
+]

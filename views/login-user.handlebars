@@ -1,0 +1,45 @@
+{{!-- {{log this}} --}}
+<div class="container content box">
+    <h2>Log in</h2>
+    <form id="auth-form" data-registration="false">
+
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left has-icons-right">
+                <input id="email-input" class="input is-info" type="email" {{#if testData}} value="{{testData.email}}"
+                    {{/if}} />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-left has-icons-right">
+                <input id="password-input" class="input password is-info" type="password" {{#if testData}}
+                    value="{{testData.password}}" {{/if}} />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-key"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link">Login</button>
+            </div>
+            <div class="control">
+                <button class="button is-link is-light">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="/js/login-reg.js"></script>
