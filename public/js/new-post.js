@@ -26,14 +26,20 @@ const submitPost = async (userId, postDetails) => {
 };
 
 async function sendData(data) {
-	const formData = new FormData();
-	for (const name in data) {
-		formData.append(name, data[name]);
+	try {
+		const formData = new FormData();
+		for (const name in data) {
+			formData.append(name, data[name]);
+		}
+		const response = await fetch(FETCHURL, {
+			method: 'POST',
+			body: formData,
+		});
+		if (response.ok) console.log('successfully created post');
+		window.location.href = '../posts';
+	} catch (error) {
+		console.log(error);
 	}
-	const response = await fetch(FETCHURL, {
-		method: 'POST',
-		body: formData,
-	});
 
 	// ...
 }
