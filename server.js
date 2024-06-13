@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const port = 3000;
+const PORT = process.env.PORT || 3001;
 //helpers and utils
 const helpers = require('./utils/helpers');
 const path = require('path');
@@ -70,9 +70,9 @@ app.use(testing);
 app.use(router);
 
 sequelize.sync({ force: false }).then(() => {
-	app.listen(port, () => {
+	app.listen(PORT, () => {
 		console.log(
-			`Example app listening on port ${port}. http://localhost:${port}`,
+			`Example app listening on port ${PORT}. http://localhost:${PORT}`,
 		);
 	});
 });
