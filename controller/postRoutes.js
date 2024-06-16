@@ -6,7 +6,9 @@ const siteTitle = 'Site Title';
 router.get('/', async (req, res) => {
 	console.log('req.session.loggedIn', req.session.loggedIn);
 	try {
-		const postData = await Post.findAll({});
+		const postData = await Post.findAll({
+			order: [['created_at', 'DESC']],
+		});
 
 		const posts = await postData.map((post) => post.get({ plain: true }));
 
