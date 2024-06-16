@@ -1,5 +1,7 @@
 {{!-- {{log this}} --}}
+{{#if loggedIn}}
 {{>post-buttons}}
+{{/if}}
 {{#each posts as |post|}}
 <div class="container">
     <div class="card">

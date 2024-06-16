@@ -1,7 +1,8 @@
 {{log this}}
 <div class="container content box">
   <h2>New Post</h2>
-  <form data-user-id="{{user_id}}" id="new-post-form">
+  <form action="/api/posts/new" method="POST" enctype="multipart/form-data" data-user-id="{{user_id}}"
+    id="new-post-form">
     <div class="field">
       <label class="label">Post Title</label>
       <div class="control">
@@ -13,6 +14,12 @@
       <label class="label">Content</label>
       <div class="control">
         <textarea id="content-input" class="textarea" rows="10" type="text"></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Image</label>
+      <div class="control">
+        <input id="file-input" class="file" name="image" type="file"></textarea>
       </div>
     </div>
 

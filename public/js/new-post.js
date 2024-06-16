@@ -8,30 +8,21 @@ console.log(userId);
 
 const FETCHURL = '/api/posts';
 
-const submitPost = async (userId, postDetails) => {
-	try {
-		const response = await fetch(FETCHURL, {
-			method: 'POST',
-			mode: 'same-origin',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(postDetails),
-		});
-		if (response.ok) console.log('successfully created post');
-		window.location.href = '../posts';
-	} catch (error) {
-		console.error(error);
-	}
-};
-
 async function sendData(data) {
+	const file = document.getElementById('file-input').files[0];
 	try {
 		const formData = new FormData();
 		for (const name in data) {
+			console.log(name, data[name]);
+		}
+		for (const name in data) {
 			formData.append(name, data[name]);
 		}
-		const response = await fetch(FETCHURL, {
+		if (file) {
+			formData.append('file', file);
+		}
+		console.log(formData);
+		const response = await fetch(`${FETCHURL}/new`, {
 			method: 'POST',
 			body: formData,
 		});
@@ -46,6 +37,8 @@ async function sendData(data) {
 
 $postForm.addEventListener('submit', (event) => {
 	console.log($contentInput.value);
+	console.log($titleInput.value);
+
 	event.preventDefault();
 	if (!userId) {
 		console.log(userId);

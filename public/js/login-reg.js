@@ -46,7 +46,8 @@ async function submitUserLogin() {
 
 async function submitUserRegistration() {
 	console.log('registration called');
-	if (passwordValid($passwordInput.value) && $agreesToTermsInput.value) {
+	console.log($agreesToTermsInput.value);
+	if (passwordValid($passwordInput.value) && $agreesToTermsInput.checked) {
 		loginDetails = {
 			registration: true,
 			first_name: $firstNameInput.value,
@@ -70,6 +71,8 @@ async function submitUserRegistration() {
 			console.error(error);
 		}
 	}
+	if (!$agreesToTermsInput.checked)
+		alert('Please review and accept terms and conditions.');
 }
 
 $authForm.addEventListener('submit', (event) => {

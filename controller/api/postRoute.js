@@ -3,12 +3,11 @@ const upload = require('../../utils/upload');
 const { Post, RegisteredUser } = require('../../model');
 
 async function createPost(req, res, postDetails) {
-	console.log('req body', req.body);
 	try {
 		const postCreated = await Post.create(postDetails, {});
 		if (postCreated) {
 			req.session.loggedIn = true;
-			res.status(201).json({
+			res.status(200).json({
 				message: ` Created for post: ${postDetails.title}`,
 			});
 		} else {
@@ -24,9 +23,9 @@ async function createPost(req, res, postDetails) {
 	}
 }
 
-router.post('/', upload.single('file'), async (req, res) => {
+router.post('/new', upload.single('file'), async (req, res) => {
 	console.log('req to new post');
-	console.log('req body', req.body);
+
 	if (!req.session.loggedIn) return;
 	if (!req.session.user_id == req.body.user_id) return;
 
@@ -34,9 +33,9 @@ router.post('/', upload.single('file'), async (req, res) => {
 		user_id: req.session.user_id,
 		title: req.body.title,
 		content: req.body.content,
+		img: req.file.path.replace('public/', ''),
 	};
-	console.log('req to new post');
-	console.log('postDetails', postDetails);
+
 	try {
 		await createPost(req, res, postDetails);
 	} catch (error) {

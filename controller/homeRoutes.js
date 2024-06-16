@@ -10,6 +10,14 @@ const siteTitle = 'Site Title';
 
 router.use('/posts', postRoute);
 
+function logUser(req, res, next) {
+	console.log('req.session');
+	console.log(req.session);
+	next();
+}
+
+router.use(logUser);
+
 router.get('/', async (req, res) => {
 	try {
 		const postData = await Post.findAll({

@@ -22,7 +22,7 @@ const sess = {
 	secret: process.env.SECRET,
 	resave: false,
 	saveUninitialized: false,
-	cookie: { maxAge: 200000 },
+	cookie: { maxAge: 2000000 },
 	//setup the storage of the session to be with Se..Store and referencing the database.
 	store: new SequelizeStore({
 		db: sequelize,
