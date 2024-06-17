@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, Comment } = require('../model');
 
-const siteTitle = 'Site Title';
+const siteTitle = 'Dog Tech';
 
 router.get('/', async (req, res) => {
 	console.log('req.session.loggedIn', req.session.loggedIn);

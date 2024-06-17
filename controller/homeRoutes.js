@@ -6,7 +6,7 @@ const router = require('express').Router();
 const { RegisteredUser, Post, Comment } = require('../model');
 const postRoute = require('./postRoutes');
 
-const siteTitle = 'Site Title';
+const siteTitle = 'Dog Tech';
 
 router.use('/posts', postRoute);
 
