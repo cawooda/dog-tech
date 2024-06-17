@@ -1,4 +1,4 @@
-{{!-- {{log this}} --}}
+{{log this}}
 <div class="navbar-end">
   {{#if loggedIn}}
   {{>post-buttons}}
@@ -37,12 +37,15 @@
         {{/each}}
         <br />
         <time datetime="2016-1-1">{{formatDate createdAt}}</time>
+        {{user_id}}
+        {{post.id}}
       </div>
+      <a href="/posts/comments/{{post.id}}">Make a comment</a>
       {{>comments}}
-
-
+      <a href="/posts/comments/{{post.id}}">Make a comment</a>
     </div>
   </div>
 </div>
 {{/each}}
 {{/if}}
+<script src="/js/new-comment.js"></script>

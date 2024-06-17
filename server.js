@@ -22,13 +22,17 @@ const sess = {
 	secret: process.env.SECRET,
 	resave: false,
 	saveUninitialized: false,
-	cookie: { maxAge: 2000000 },
-	//setup the storage of the session to be with Se..Store and referencing the database.
+	cookie: { maxAge: 1 * 24 * 60 * 60 * 1000 },
+
 	store: new SequelizeStore({
 		db: sequelize,
 	}),
 };
 app.use(session(sess));
+
+//encoding
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //routes
 const router = require('./controller');
@@ -41,9 +45,6 @@ const handlebars = expressHandlebarsEngine.create({ helpers });
 app.engine('handlebars', handlebars.engine);
 //This sets the view engine whhich the app will use when it calls render()
 app.set('view engine', 'handlebars');
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 

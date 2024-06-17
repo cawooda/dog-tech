@@ -1,0 +1,18 @@
+{{!-- {{log this}} --}}
+<div class="container content box">
+  <form action="/api/comments/new" method="POST" data-user-id="{{user_id}}" data-post-id="{{post_id}}"
+    class="new-comment-form">
+
+    <div class="field">
+      <label class="label">New Comment</label>
+      <input name="user_id" value="{{user_id}}">
+      <input name="post_id" value="{{post_id}}">
+      <div class="control">
+        <textarea id="comment-input" class="textarea" rows="5" name="content" type="text"></textarea>
+      </div>
+    </div>
+    <button id="new-comment-btn" class="button is-primary">Submit</button>
+</div>
+
+</form>
+</div>

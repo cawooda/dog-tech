@@ -77,14 +77,6 @@ async function submitUserRegistration() {
 
 $authForm.addEventListener('submit', (event) => {
 	event.preventDefault();
-	console.log(
-		'if true, this is from a registration form',
-		event.target.dataset.registration,
-	);
-	console.log(
-		'if false, this is login form',
-		event.target.dataset.registration,
-	);
 
 	if (event.target.dataset.registration == 'true') {
 		submitUserRegistration();

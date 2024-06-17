@@ -31,9 +31,14 @@
                 {{/each}}
                 <br />
                 <time datetime="2016-1-1">{{formatDate createdAt}}</time>
+                <p>{{user_id}}</p>
+                <p>{{post_id}}</p>
+                <a href="/posts/comments/{{post.id}}">Make a Comment</a>
                 {{>comments}}
+                <a href="/posts/comments/{{post.id}}">Make a Comment</a>
             </div>
         </div>
     </div>
 </div>
 {{/each}}
+<script src="/js/new-comment.js"></script>

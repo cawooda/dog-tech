@@ -3,21 +3,17 @@ const { RegisteredUser } = require('../../model');
 const { validatePassword } = require('../../utils/helpers');
 
 async function createUser(req, res, userDetails) {
-	console.log(userDetails);
+	console.log('create user called', userDetails);
 	try {
 		const userExists = await RegisteredUser.findAll({
 			where: {
 				email: userDetails.email,
 			},
 		});
-		if (userExists) {
-			res.status(500).json({
-				message: `Account Creation failed for User: ${userDetails.first_name}. We think that user exists already`,
-			});
-			return;
-		}
+
 		const userCreated = await RegisteredUser.create(userDetails, {});
-		if (userCreated) {
+
+		if (userCreated.get({ plain: true }).id) {
 			req.session.user_id = userData.id;
 			req.session.loggedIn = true;
 			res.status(201).json({
@@ -37,7 +33,6 @@ async function createUser(req, res, userDetails) {
 }
 
 async function loginUser(req, res, loginDetails) {
-	console.log('login function in user route run');
 	console.log('login details', loginDetails);
 	console.log('req.session.loggedIn', req.session.loggedIn);
 	try {
@@ -47,6 +42,7 @@ async function loginUser(req, res, loginDetails) {
 				email: loginDetails.email,
 			},
 		});
+		console.log('login userdata', userData);
 		//couldnt find user? send back a message letting client know.
 		if (!userData) {
 			res.status(400).json({
@@ -57,6 +53,7 @@ async function loginUser(req, res, loginDetails) {
 		}
 		//the password is valid if the checkPassword method whick lives with the registered user model returns true. It is checking bcrypt.
 		const validPassword = await userData.checkPassword(req.body.password);
+		console.log('valid password', validPassword);
 		if (!validPassword) {
 			console.log('not a valiud password');
 			res.status(400).json({
@@ -67,9 +64,9 @@ async function loginUser(req, res, loginDetails) {
 
 		req.session.user_id = userData.id;
 		req.session.loggedIn = true;
+		console.log('req.session.loggedIn', req.session.loggedIn);
 		res.json({ message: 'logged in..' });
 		console.log('login function in user route end');
-		console.log('req.session.loggedIn', req.session.loggedIn);
 	} catch (error) {
 		console.log('an error occurred', error);
 
@@ -81,7 +78,7 @@ async function loginUser(req, res, loginDetails) {
 router.post('/', async (req, res) => {
 	//check if password meets validation. since this is handling both login and registration, there may be some
 	//problems down the track if the validation is updated and old users log in.
-
+	console.log('req.body', req.body);
 	if (!validatePassword(req.body.password)) {
 		res.status(500)
 			.json({ message: 'password does not meet requirements' })
@@ -97,7 +94,7 @@ router.post('/', async (req, res) => {
 		email: req.body.email,
 		password: req.body.password,
 	};
-
+	console.log('userdetails', userDetails);
 	userDetails.registration
 		? createUser(req, res, userDetails)
 		: loginUser(req, res, userDetails);

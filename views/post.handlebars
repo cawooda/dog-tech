@@ -1,0 +1,55 @@
+{{!-- {{log this}} --}}
+<div class="container">
+    <div class="card">
+        <div class="card-image">
+            <figure class="image is-4by3">
+                <img src="/{{post.img}}" alt="{{post.img_alt}}" />
+            </figure>
+        </div>
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image is-48x48">
+                        <img src="/{{post.img}}" alt="{{post.img_alt}}" />
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title is-4">{{post.registeredUser.first_name}} {{post.registeredUser.last_name}}</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>{{post.title}}</h2>
+                {{post.content}}
+                <br />
+                {{#each post.tags as |tag|}}
+                <a href="/tags">#{{tag}}</a>
+                {{/each}}
+                <br />
+                <time datetime="2016-1-1">{{formatDate createdAt}}</time>
+                {{post_id}}
+            </div>
+            {{>comments }}
+            <div class="container content box">
+                <form action="/api/comments/new" method="POST" data-user-id="{{user_id}}" data-post-id="{{post_id}}"
+                    class="new-comment-form">
+
+                    <div class="field">
+                        <label class="label">New Comment</label>
+                        <div class="control">
+                            <input id="post-id" name="post_id" value="{{post_id}}" hidden>
+                            <input id="user-id" name="user_id" value="{{user_id}}" hidden>
+                            <textarea id="comment-input" class="textarea" rows="5" name="content"
+                                type="text"></textarea>
+                        </div>
+                    </div>
+                    <button id="new-comment-btn" class="button is-primary">Submit</button>
+            </div>
+
+            </form>
+        </div>
+
+
+    </div>
+</div>
+</div>

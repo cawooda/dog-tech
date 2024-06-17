@@ -10,17 +10,18 @@ const siteTitle = 'Site Title';
 
 router.use('/posts', postRoute);
 
-function logUser(req, res, next) {
-	console.log('req.session');
-	console.log(req.session);
-	next();
-}
+// function logUser(req, res, next) {
+// 	console.log('req.session');
+// 	console.log(req.session);
+// 	next();
+// }
 
-router.use(logUser);
+// router.use(logUser);
 
 router.get('/', async (req, res) => {
 	try {
 		const postData = await Post.findAll({
+			order: [['created_at', 'DESC']],
 			include: { all: true, nested: true },
 		});
 
@@ -28,6 +29,7 @@ router.get('/', async (req, res) => {
 		res.render('home', {
 			posts: posts,
 			siteTitle: siteTitle,
+			user_id: req.session.user_id,
 			testData: req.session.testing ? req.session.testData : false,
 			loggedIn: req.session.loggedIn,
 			loggedOut: !req.session.loggedIn,
