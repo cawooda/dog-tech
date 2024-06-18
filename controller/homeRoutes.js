@@ -1,29 +1,28 @@
 require('dotenv').config();
 const termsAddress = process.env.TERMSADDRESS;
-console.log(termsAddress);
+const siteTitle = process.env.SITE_TITLE;
+//this stores the site title and terms and conditions page
 
 const router = require('express').Router();
+//get router
 const { RegisteredUser, Post, Comment } = require('../model');
-const postRoute = require('./postRoutes');
+//get models for use in queries
 
-const siteTitle = 'Dog Tech';
+const postRoute = require('./postRoutes');
+//send post related requests to that router.
+
+//
 
 router.use('/posts', postRoute);
 
-// function logUser(req, res, next) {
-// 	console.log('req.session');
-// 	console.log(req.session);
-// 	next();
-// }
-
-// router.use(logUser);
+//router.use(logUser);
 
 router.get('/', async (req, res) => {
 	try {
 		const postData = await Post.findAll({
 			order: [['created_at', 'DESC']],
 			include: { all: true, nested: true },
-		});
+		}); //could filter for logged in user
 
 		const posts = await postData.map((post) => post.get({ plain: true }));
 		res.render('home', {
@@ -39,7 +38,6 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/about', async (req, res) => {
-	console.log('home route reached, should call about layout');
 	return res.render('about', {
 		siteTitle: siteTitle,
 		testData: req.session.testing ? req.session.testData : false,
@@ -50,7 +48,6 @@ router.get('/about', async (req, res) => {
 });
 
 router.get('/contact', async (req, res) => {
-	console.log('home route reached, should call contact layout');
 	return res.render('contact', {
 		siteTitle: siteTitle,
 		pageTitle: 'Contact Page',
@@ -96,7 +93,6 @@ router.get('/terms-and-conditions', async (req, res) => {
 });
 
 router.get('/', (req, res) => {
-	console.log('index of controller reached');
 	res.status(200).send('controller OK');
 });
 

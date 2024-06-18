@@ -2,6 +2,7 @@ const router = require('express').Router();
 const upload = require('../../utils/upload');
 const { Post, RegisteredUser } = require('../../model');
 
+//this function is called by the route handler to create a new post.
 async function createPost(req, res, postDetails) {
 	try {
 		const postCreated = await Post.create(postDetails, {});
@@ -22,7 +23,8 @@ async function createPost(req, res, postDetails) {
 		});
 	}
 }
-
+//this route handles postdata containing an image submitted with the post.
+//It calls a function above to create the sequelize call and returns a response. Probably the response should be handled here
 router.post('/new', upload.single('file'), async (req, res) => {
 	console.log('req to new post');
 

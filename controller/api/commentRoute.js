@@ -2,6 +2,8 @@ const router = require('express').Router();
 const upload = require('../../utils/upload');
 const { Post, Comment, RegisteredUser } = require('../../model');
 
+//function is called bout the route handler. Not sure if this is best, bit the function handles the creation of the
+//sequelize call and the response. Probably I should let the route handle the response.
 async function createComment(req, res, commentDetails) {
 	console.log('create comment reached', commentDetails);
 	try {
@@ -22,10 +24,8 @@ async function createComment(req, res, commentDetails) {
 	}
 }
 
+//This handles route which requests a new comment.
 router.post('/new', async (req, res) => {
-	console.log('req.body', req.body);
-	console.log('req to new comment');
-
 	if (!req.session.loggedIn) return;
 	if (!req.session.user_id == req.body.user_id) return;
 

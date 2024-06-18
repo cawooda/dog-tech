@@ -3,6 +3,7 @@ const registeredUserRoute = require('./userRoute');
 const postsRoute = require('./postRoute');
 const commentsRoute = require('./commentRoute');
 
+//create the subroutes to this route.
 router.use('/users', registeredUserRoute);
 router.use('/posts', postsRoute);
 router.use('/comments', commentsRoute);
