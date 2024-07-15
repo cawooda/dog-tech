@@ -1,8 +1,10 @@
-{{!-- {{log this}} --}}
-<div class="content">
+{{log this}}
+<div class="container">
     <h4>Comments</h4>
     {{#each comments as |comment|}}
     <p>{{comment.content}}</p>
+    <p class="is-size-7">-{{comment.registeredUser.first_name}}</p>
+
     {{/each}}
     <br />
 </div>

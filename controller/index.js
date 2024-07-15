@@ -56,6 +56,13 @@ const demoTickers = require('./demoTicker.json');
 // router.use(tickerData);
 
 router.use('/', homeRoutes);
-router.use('/api', apiRoutes);
+router.use(
+	'/api',
+	(req, res, next) => {
+		console.log('api');
+		next();
+	},
+	apiRoutes,
+);
 
 module.exports = router;

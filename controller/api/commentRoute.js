@@ -30,7 +30,7 @@ router.post('/new', async (req, res) => {
 	if (!req.session.user_id == req.body.user_id) return;
 
 	const commentDetails = {
-		user_id: req.session.user_id,
+		registered_user_id: req.session.user_id,
 		post_id: req.body.post_id,
 		content: req.body.content,
 	};

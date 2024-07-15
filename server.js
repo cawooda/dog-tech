@@ -52,7 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 function testing(req, _res, next) {
 	console.log('testing');
 	console.log(process.env.TESTING);
-	if (process.env.TESTING) {
+	if (process.env.TESTING == 'true') {
 		req.session.testing = true;
 		req.session.testData = {
 			first_name: 'Andrew',
@@ -73,7 +73,7 @@ app.use(router);
 sequelize.sync({ force: false }).then(() => {
 	app.listen(PORT, () => {
 		console.log(
-			`Example app listening on port ${PORT}. http://localhost:${PORT}`,
+			`Example app listening on port ${PORT}. http://localhost:${PORT}`
 		);
 	});
 });

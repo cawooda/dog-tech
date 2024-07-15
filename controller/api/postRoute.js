@@ -4,6 +4,7 @@ const { Post, RegisteredUser } = require('../../model');
 
 //this function is called by the route handler to create a new post.
 async function createPost(req, res, postDetails) {
+	console.log('create post', postDetails);
 	try {
 		const postCreated = await Post.create(postDetails, {});
 		if (postCreated) {
@@ -32,7 +33,7 @@ router.post('/new', upload.single('file'), async (req, res) => {
 	if (!req.session.user_id == req.body.user_id) return;
 
 	const postDetails = {
-		user_id: req.session.user_id,
+		registered_user_id: req.session.user_id,
 		title: req.body.title,
 		content: req.body.content,
 		img: req.file.path.replace('public/', ''),
