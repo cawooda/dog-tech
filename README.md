@@ -16,10 +16,16 @@ A simple blog with user authentication, new posts, comments and file handling.
 
 ## Installation Instructions
 
-npm i to install node packages. setup database and ensure database variables are added to .env file from the .env example file.
+Setup database and ensure database variables are added to .env file from the .env example file.
+NPM i to install node packages. 
+NPM run start to start server.
+
 
 ## Usage
-Use to log in and out. Use to post, use to comment. 
+User can log in and out. 
+User can click new post to compose a new post. 
+User can upload a image with a post.
+User can comment on an existing post.
 
 ### Screenshot
 
@@ -29,10 +35,10 @@ Use to log in and out. Use to post, use to comment.
 
 ## Features
 
-user authentication.
-new post
-add comment
-file handling for uploading image to post.
+User authentication.
+New post
+Add comment
+File handling for uploading image to post.
 
 
 
